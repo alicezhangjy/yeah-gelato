@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: gelato-tracker
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start:server
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+    # Auto-deploy from main branch
+    autoDeploy: true
